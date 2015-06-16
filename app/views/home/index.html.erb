@@ -1,0 +1,4 @@
+<h1><%= @status %></h1>
+<% @reports.each do |report| %>
+  <p><%= report.created_at.strftime("%d %b at %k:%M:%S") %> - <%= report.message %></p>
+<% end %>

@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+  def api_response_unprocessable_entity
+    render json: { data: nil }, status: :unprocessable_entity
+  end
+
+  def api_response_ok
+    render json: { data: nil }, status: :ok
+  end
 end
