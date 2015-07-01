@@ -6,7 +6,7 @@ class ReportsController < ApplicationController
     if @report.save
       api_response_ok
     else
-      api_response_unprocessable_entity # Report could not have been created
+      api_response_unprocessable_entity(@report.errors.messages)
     end
   end
 

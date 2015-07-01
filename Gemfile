@@ -5,6 +5,10 @@ gem 'pg'
 
 gem 'rack-cors'
 
+gem 'devise'
+
+gem 'active_model_serializers', '~> 0.8.3'
+
 # Useful gems
 gem 'annotate'
 gem 'responders' # For the annotate
