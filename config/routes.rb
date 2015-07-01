@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'git/status'
+
   root to: 'home#index'
 
   devise_for :users, only: []
@@ -7,6 +9,7 @@ Rails.application.routes.draw do
     resource :login, only: [:create], controller: :sessions
     resource :signup, only: [:create], controller: :users
 
-    resources :reports, only: [:create]
+    resources :reports, only: [:create, :index]
+    get 'reports/current_status', to: 'reports#current_status'
   end
 end
