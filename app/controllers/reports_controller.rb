@@ -5,7 +5,7 @@ class ReportsController < ApplicationController
   def create
     @report = Report.new(status: params[:status], message: params[:message])
     if @report.save
-      api_response_ok
+      render json: @report, serializer: ReportSerializer, root: 'data'
     else
       api_response_unprocessable_entity(@report.errors.messages)
     end
