@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
 
   after_create :update_access_token!
 
+  def is_admin?
+    self.is_admin
+  end
+
   private
 
   def update_access_token!

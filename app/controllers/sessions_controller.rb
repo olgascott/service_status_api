@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_action :authenticate_user_from_token!, only: [:create]
 
   def create
     @user = User.find_for_authentication(email: params[:email])

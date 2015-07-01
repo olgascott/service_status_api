@@ -1,5 +1,5 @@
 class ReportsController < ApplicationController
-  before_filter :validate_params
+  before_filter :validate_params, :require_admin
 
   def create
     @report = Report.new(status: params[:status], message: params[:message])
