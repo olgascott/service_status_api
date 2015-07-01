@@ -3,3 +3,15 @@
 To set a status, send a POST request to /api/1/reports with json containing message and status. It is possible to create a report only with a status or only with a message. If status key is being passed, value can only be 'up', 'down' or nil.
 
 To view the latest 10 messages and a current status, open a root route of the app in a browser.
+
+== Setup
+
+If you run `rake db:setup`, it will load seeds into the database, creating 12 test status messages, current status and an admin user with email `test@example.com` and password `123123`. Using this credentials, you can authenticate yourself as an admin, so you can create status messages and update status.
+
+== Routes
+
+* `POST /api/1/signup`  - creates a user, requires email and password
+* `POST /api/1/login`   - returns user with access token, that can be used to call actions, that require quthentication
+* `POST /api/1/reports` - creates a report. Requires either status or message (or both). Also requires admin user to be authenticated, so user's access_token should be passed in header as `Authorization`
+* `GET /api/1/reports`  - returns last 10 reports
+* `GET /api/1/reports/current_status`  - returns current service status
