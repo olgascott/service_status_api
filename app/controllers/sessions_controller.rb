@@ -3,9 +3,8 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_for_authentication(email: params[:email])
-    return invalid_login_attempt unless @user
 
-    if @user.valid_password?(params[:password])
+    if @user.present? && @user.valid_password?(params[:password])
       sign_in :user, @user
       render json: @user, serializer: SessionSerializer, root: 'data'
     else
